@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CDN connection for tailwind css -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Connection to google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="maps.css" />
+
+    <!-- Custom Tailwind configurations for font and color-->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              title: "Anton",
+              default: "Inter",
+            },
+            colors: {
+              gray: "hsl(48,5,61)",
+              gray_acc: "hsl(48,5,49)",
+              gray_acc_dark: "hsl(48,5,29)",
+              black: `hsl(0,0,10)`,
+              black_primary: `hsl(0,0,17)`,
+              black_acc: `hsl(0,0,22)`,
+              black_light: `hsl(0,0,45)`,
+              black_lighter: `hsl(0,0,82)`,
+              red: `hsl(4,81,40)`,
+              red_acc: `hsl(4,81,71)`,
+              green: `hsl(156,100,26)`,
+              green_acc: `hsl(156,100,71)`,
+              purple: `hsl(329,35,27)`,
+              purple_acc: `hsl(329,35,60)`,
+              aqua: `hsl(180,38,27)`,
+              aqua_acc: `hsl(180,38,63)`,
+              orange: `hsl(35,100,35)`,
+              orange_acc: `hsl(35,100,66)`,
+            },
+          },
+        },
+      };
+    </script>
+    <title>Mini Project 1: Maps</title>
+  </head>
+  <body
+    class="font-default relative m-8 bg-black_primary lg:mx-auto lg:w-[95%] xl:w-[85%]"
+  >
+    <!-- Project Header -->
+    <div id="project_header" class="flex items-center justify-between">
+      <p
+        class="font-title md:max-w[100%] max-w-[70%] text-4xl uppercase tracking-wider text-gray sm:max-w-[100%]"
+      >
+        Mini Project #1: Maps
+      </p>
+      <div
+        id="get-location"
+        class="md:p flex items-center gap-4 rounded-full bg-red p-3 font-bold text-red_acc md:rounded-[18px] md:px-6"
+      >
+        <span class="material-icons-outlined md-32">
+          <span class="material-symbols-outlined"> my_location </span>
+        </span>
+        <p class="hidden md:block">Get Location</p>
+      </div>
+    </div>
+
+    <!-- Project Map Section Start -->
+    <div
+      id="map"
+      class="mt-8 flex h-72 flex-col items-center justify-center rounded-[18px] border-2 border-red text-red_acc sm:h-96"
+    >
+      <span class="material-icons-outlined md-64 w-[64px]"> maps </span>
+      <p class="text-xs">Click the floating icon to generate map</p>
+    </div>
+
+    <!-- Project Map Section End -->
+
+    <!-- Project Information Section Start -->
+    <div id="information" class="mt-8 flex flex-wrap sm:justify-between">
+      <!-- When there is no location loaded, this card will be loaded -->
+      <!-- <div
+        id="current-location"
+        class="mb-8 flex w-full flex-col justify-between rounded-[18px] bg-orange_acc px-6 py-8 text-orange sm:mb-0 sm:w-[43%] sm:px-6 md:w-[50%] lg:w-[40%]"
+      >
+        <div
+          id="address"
+          class="mt-4 flex min-h-24 flex-col items-center font-bold"
+        >
+          <span class="material-icons-outlined md-84">
+            not_listed_location
+          </span>
+          <p class="mt-5 text-start text-2xl sm:text-center">
+            Load map to generate current location address
+          </p>
+        </div>
+      </div> -->
+
+      <!-- When location is loaded, this card will be loaded -->
+      <div
+        class="mb-8 flex w-full flex-col justify-between rounded-[18px] bg-orange_acc px-6 py-8 text-orange sm:mb-0 sm:w-[43%] sm:px-6 md:w-[50%] lg:w-[40%]"
+      >
+        <p class="text-3xl font-bold text-black lg:block">Location</p>
+
+        <div class="mt-4 flex min-h-10 flex-col items-center font-bold">
+          <p class="text-2xl sm:w-full sm:text-xl md:text-2xl lg:text-lg">
+            1747-A, Lorong Tiong, Jalan Teluk Wanjah, Alor Setar, Kedah, 05200
+          </p>
+        </div>
+        <div class="mt-4 flex flex-wrap justify-between">
+          <div
+            class="hidden items-center justify-evenly gap-2 rounded-[5px] border border-orange p-2 font-bold md:mb-0 md:flex md:w-[48%] lg:w-[42%]"
+          >
+            <span class="material-icons-outlined md-32">
+              center_focus_weak
+            </span>
+            <p class="text-sm">100.00%</p>
+          </div>
+
+          <div
+            class="flex w-full items-center justify-center gap-2 rounded-[5px] bg-orange p-2 text-sm font-bold md:w-[48%] lg:w-[55%]"
+          >
+            <span class="material-icons-outlined md-32 text-orange_acc">
+              save
+            </span>
+            <p class="text-lg text-orange_acc md:text-base">Save Location</p>
+          </div>
+        </div>
+      </div>
+      <!-- Project Information Section End -->
+
+      <!-- Find Distance Section Start -->
+      <div
+        id="find-distance"
+        class="flex w-full flex-col rounded-[18px] bg-gray px-6 py-8 text-gray_acc_dark sm:mb-0 sm:w-[55%] md:w-[48%] lg:w-[58%]"
+      >
+        <p id="routes_header" class="text-3xl font-bold lg:block">
+          Find Routes
+        </p>
+
+        <div class="flex flex-wrap gap-2 lg:flex-nowrap">
+          <form
+            id="find_routes_input_field"
+            class="relative mt-4 flex w-full flex-col lg:w-[48%]"
+          >
+            <input
+              type="text"
+              placeholder="Enter From Location ID"
+              class="bg-gray-400 mb-4 rounded-md bg-gray_acc px-4 py-2 text-center text-gray_acc_dark placeholder:font-bold placeholder:text-gray_acc_dark"
+            />
+            <div>
+              <div
+                class="absolute inset-x-1/2 h-8 w-1 -translate-x-1/2 -translate-y-1/2 transform border-2 border-dashed border-gray_acc_dark"
+              ></div>
+            </div>
+            <input
+              type="text"
+              placeholder="Enter To Location ID"
+              class="bg-gray-400 mt-4 rounded-md bg-gray_acc px-4 py-2 text-center text-gray_acc_dark placeholder:font-bold placeholder:text-gray_acc_dark"
+            />
+          </form>
+
+          <div
+            class="mt-4 flex w-full flex-wrap items-center justify-evenly lg:w-[50%]"
+          >
+            <div
+              class="flex h-10 w-[31%] items-center justify-center self-start rounded-[10px] border-2 border-gray_acc_dark text-center lg:w-[48%]"
+            >
+              <p class="text-sm font-bold lg:text-base">11.58km</p>
+            </div>
+
+            <div
+              class="flex h-10 w-[31%] items-center justify-center self-start rounded-[10px] border-2 border-gray_acc_dark text-center lg:w-[48%]"
+            >
+              <p class="text-sm font-bold lg:text-base">1440 mins</p>
+            </div>
+
+            <button
+              class="flex h-10 w-[31%] items-center justify-center self-end rounded-[5px] bg-purple px-2 py-1 text-sm font-bold lg:w-full"
+              type="submit"
+              form="find_routes_input_field"
+            >
+              <span class="material-icons-outlined md-32 text-purple_acc">
+                refresh
+              </span>
+              <p class="text-purple_acc">
+                <span class="hidden lg:inline">Refresh</span> Map
+              </p>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Find Distance Section End -->
+    </div>
+
+    <!-- Saved Location Section Start -->
+    <div class="mt-8 rounded-[18px] bg-black px-6 py-8">
+      <div
+        id="saved_location-section-header"
+        class="flex items-center justify-between"
+      >
+        <p class="text-3xl font-bold text-gray">Saved Places</p>
+        <div
+          class="flex items-center gap-2 rounded-full bg-aqua p-1 text-aqua_acc sm:rounded-[10px] sm:p-2"
+        >
+          <span class="material-icons-outlined md-32"> add </span>
+          <p class="hidden font-bold sm:block">Add Location</p>
+        </div>
+      </div>
+
+      <div
+        id="location-stored"
+        class="mt-4 flex flex-wrap items-center justify-center gap-4 sm:justify-between sm:gap-2 lg:justify-start lg:gap-4"
+      >
+        <!-- Max only 5 locations can be added -->
+        <!-- Item populated I start -->
+        <div
+          id="location-card"
+          class="mt-4 flex w-full max-w-[95%] flex-col rounded-[10px] bg-black_primary px-2 py-4 pt-4 sm:w-[49%] sm:max-w-none lg:w-[32%]"
+        >
+          <div
+            class="flex items-center justify-between text-xs italic text-gray_acc"
+          >
+            <p
+              class="rounded-[18px] border border-green px-2 py-1 text-green_acc"
+            >
+              #012345678
+            </p>
+            <div class="flex gap-1">
+              <div
+                class="flex items-center rounded-[5px] bg-orange_acc px-2 py-1 text-orange"
+              >
+                <span class="material-icons-outlined md-18">edit</span>
+              </div>
+              <div
+                class="flex items-center rounded-[5px] bg-red px-2 py-1 text-red_acc"
+              >
+                <span class="material-icons-outlined md-18">delete</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-start">
+            <div class="mt-2">
+              <p
+                id="location_name"
+                class="text-3xl font-bold text-black_lighter"
+              >
+                Alor Setar Home
+              </p>
+              <div id="coordinates" class="mt-2 flex justify-start gap-2">
+                <p
+                  class="rounded-[10px] border border-gray_acc p-2 text-xs text-gray_acc"
+                >
+                  Lgt: <span>100.5678</span>
+                </p>
+                <p
+                  class="rounded-[10px] border border-gray_acc p-2 text-xs text-gray_acc"
+                >
+                  Ltd: <span>68.5678</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Item populated I end -->
+        <!-- Item populated II start -->
+        <div
+          id="location-card"
+          class="mt-4 flex w-full max-w-[95%] flex-col rounded-[10px] bg-black_primary px-2 py-4 pt-4 sm:w-[49%] sm:max-w-none lg:w-[32%]"
+        >
+          <div
+            class="flex items-center justify-between text-xs italic text-gray_acc"
+          >
+            <p
+              class="rounded-[18px] border border-green px-2 py-1 text-green_acc"
+            >
+              #012345678
+            </p>
+            <div class="flex gap-1">
+              <div
+                class="flex items-center rounded-[5px] bg-orange_acc px-2 py-1 text-orange"
+              >
+                <span class="material-icons-outlined md-18">edit</span>
+              </div>
+              <div
+                class="flex items-center rounded-[5px] bg-red px-2 py-1 text-red_acc"
+              >
+                <span class="material-icons-outlined md-18">delete</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-start">
+            <div class="mt-2">
+              <p
+                id="location_name"
+                class="text-3xl font-bold text-black_lighter"
+              >
+                Alor Setar Home
+              </p>
+              <div id="coordinates" class="mt-2 flex justify-start gap-2">
+                <p
+                  class="rounded-[10px] border border-gray_acc p-2 text-xs text-gray_acc"
+                >
+                  Lgt: <span>100.5678</span>
+                </p>
+                <p
+                  class="rounded-[10px] border border-gray_acc p-2 text-xs text-gray_acc"
+                >
+                  Ltd: <span>68.5678</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Item populated III start -->
+        <div
+          id="location-card"
+          class="mt-4 flex w-full max-w-[95%] flex-col rounded-[10px] bg-black_primary px-2 py-4 pt-4 sm:w-[49%] sm:max-w-none lg:w-[32%]"
+        >
+          <div
+            class="flex items-center justify-between text-xs italic text-gray_acc"
+          >
+            <p
+              class="rounded-[18px] border border-green px-2 py-1 text-green_acc"
+            >
+              #012345678
+            </p>
+            <div class="flex gap-1">
+              <div
+                class="flex items-center rounded-[5px] bg-orange_acc px-2 py-1 text-orange"
+              >
+                <span class="material-icons-outlined md-18">edit</span>
+              </div>
+              <div
+                class="flex items-center rounded-[5px] bg-red px-2 py-1 text-red_acc"
+              >
+                <span class="material-icons-outlined md-18">delete</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-start">
+            <div class="mt-2">
+              <p
+                id="location_name"
+                class="text-3xl font-bold text-black_lighter"
+              >
+                Alor Setar Home
+              </p>
+              <div id="coordinates" class="mt-2 flex justify-start gap-2">
+                <p
+                  class="rounded-[10px] border border-gray_acc p-2 text-xs text-gray_acc"
+                >
+                  Lgt: <span>100.5678</span>
+                </p>
+                <p
+                  class="rounded-[10px] border border-gray_acc p-2 text-xs text-gray_acc"
+                >
+                  Ltd: <span>68.5678</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Item populated IV start -->
+        <div
+          id="location-card"
+          class="mt-4 flex w-full max-w-[95%] flex-col rounded-[10px] bg-black_primary px-2 py-4 pt-4 sm:w-[49%] sm:max-w-none lg:w-[32%]"
+        >
+          <div
+            class="flex items-center justify-between text-xs italic text-gray_acc"
+          >
+            <p
+              class="rounded-[18px] border border-green px-2 py-1 text-green_acc"
+            >
+              #012345678
+            </p>
+            <div class="flex gap-1">
+              <div
+                class="flex items-center rounded-[5px] bg-orange_acc px-2 py-1 text-orange"
+              >
+                <span class="material-icons-outlined md-18">edit</span>
+              </div>
+              <div
+                class="flex items-center rounded-[5px] bg-red px-2 py-1 text-red_acc"
+              >
+                <span class="material-icons-outlined md-18">delete</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-start">
+            <div class="mt-2">
+              <p
+                id="location_name"
+                class="text-3xl font-bold text-black_lighter"
+              >
+                Alor Setar Home
+              </p>
+              <div id="coordinates" class="mt-2 flex justify-start gap-2">
+                <p
+                  class="rounded-[10px] border border-gray_acc p-2 text-xs text-gray_acc"
+                >
+                  Lgt: <span>100.5678</span>
+                </p>
+                <p
+                  class="rounded-[10px] border border-gray_acc p-2 text-xs text-gray_acc"
+                >
+                  Ltd: <span>68.5678</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Item populated IV end -->
+        <!-- Item populated V start -->
+        <div
+          id="location-card"
+          class="mt-4 flex w-full max-w-[95%] flex-col rounded-[10px] bg-black_primary px-2 py-4 pt-4 sm:w-[49%] sm:max-w-none lg:w-[32%]"
+        >
+          <div
+            class="flex items-center justify-between text-xs italic text-gray_acc"
+          >
+            <p
+              class="rounded-[18px] border border-green px-2 py-1 text-green_acc"
+            >
+              #012345678
+            </p>
+            <div class="flex gap-1">
+              <div
+                class="flex items-center rounded-[5px] bg-orange_acc px-2 py-1 text-orange"
+              >
+                <span class="material-icons-outlined md-18">edit</span>
+              </div>
+              <div
+                class="flex items-center rounded-[5px] bg-red px-2 py-1 text-red_acc"
+              >
+                <span class="material-icons-outlined md-18">delete</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-start">
+            <div class="mt-2">
+              <p
+                id="location_name"
+                class="text-3xl font-bold text-black_lighter"
+              >
+                Alor Setar Home
+              </p>
+              <div id="coordinates" class="mt-2 flex justify-start gap-2">
+                <p
+                  class="rounded-[10px] border border-gray_acc p-2 text-xs text-gray_acc"
+                >
+                  Lgt: <span>100.5678</span>
+                </p>
+                <p
+                  class="rounded-[10px] border border-gray_acc p-2 text-xs text-gray_acc"
+                >
+                  Ltd: <span>68.5678</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Item populated V end -->
+      </div>
+    </div>
+    <!-- Saved Location Section End -->
+
+    <!-- Add Location Pop Start -->
+    <!-- Replace "hidden" with "flex"-->
+    <div
+      class="fixed inset-0 left-0 right-0 top-0 z-50 hidden max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden bg-black bg-opacity-70"
+    >
+      <div
+        class="relative w-[85%] max-w-[500px] rounded-[10px] bg-black_lighter p-6"
+      >
+        <div class="absolute right-[2%] top-[5%]">
+          <span
+            class="material-icons-outlined md-24 rounded-full bg-gray p-1 text-black_lighter"
+          >
+            close
+          </span>
+        </div>
+        <form
+          id="input_fields"
+          class="relative mt-8 flex w-full flex-col items-center"
+        >
+          <input
+            type="text"
+            placeholder="Enter Location Name"
+            class="bg-gray-400 mb-2 w-[100%] rounded-md bg-gray px-4 py-2 text-center text-gray_acc_dark placeholder:font-bold placeholder:text-gray_acc_dark"
+          />
+          <div class="flex flex-wrap justify-between">
+            <input
+              type="text"
+              placeholder="Latitude"
+              class="bg-gray-400 mt-4 w-[48%] rounded-md bg-gray px-4 py-2 text-center text-gray_acc_dark placeholder:font-bold placeholder:text-gray_acc_dark"
+            />
+            <input
+              type="text"
+              placeholder="Longitude"
+              class="bg-gray-400 mt-4 w-[48%] rounded-md bg-gray px-4 py-2 text-center text-gray_acc_dark placeholder:font-bold placeholder:text-gray_acc_dark"
+            />
+
+            <button
+              type="submit"
+              class="mx-auto mt-4 flex items-center gap-4 rounded-md bg-purple px-6 py-1 text-purple_acc"
+            >
+              <span class="material-icons-outlined md-32"> save </span>
+              Save Location
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Add Location Pop End -->
+  </body>
+</html>

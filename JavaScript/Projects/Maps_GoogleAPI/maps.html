@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CDN connection for tailwind css -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Connection to google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="maps.css" />
+
+    <!-- Custom Tailwind configurations for font and color-->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              title: "Anton",
+              default: "Inter",
+            },
+            colors: {
+              gray: "hsl(48,5,61)",
+              gray_acc: "hsl(48,5,49)",
+              gray_acc_dark: "hsl(48,5,29)",
+              black: `hsl(0,0,10)`,
+              black_primary: `hsl(0,0,17)`,
+              black_acc: `hsl(0,0,22)`,
+              black_light: `hsl(0,0,45)`,
+              black_lighter: `hsl(0,0,82)`,
+              red: `hsl(4,81,40)`,
+              red_acc: `hsl(4,81,71)`,
+              green: `hsl(156,100,26)`,
+              green_acc: `hsl(156,100,71)`,
+              purple: `hsl(329,35,27)`,
+              purple_acc: `hsl(329,35,60)`,
+              aqua: `hsl(180,38,27)`,
+              aqua_acc: `hsl(180,38,63)`,
+              orange: `hsl(35,100,35)`,
+              orange_acc: `hsl(35,100,66)`,
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Maps Script -->
+    <script src="maps.js" defer></script>
+    <title>Mini Project 1: Maps</title>
+  </head>
+
+  <body
+    class="font-default bg-black_primary relative m-8 lg:mx-auto lg:w-[95%] xl:w-[85%]"
+  >
+    <!-- Project Header -->
+    <div id="project_header" class="flex items-center justify-between">
+      <p
+        class="font-title md:max-w[100%] text-gray max-w-[70%] text-4xl uppercase tracking-wider sm:max-w-[100%]"
+      >
+        Mini Project #1: Maps
+      </p>
+      <div
+        id="get-location"
+        class="md:p bg-red text-red_acc flex items-center gap-4 rounded-full p-3 font-bold md:rounded-[18px] md:px-6"
+      >
+        <span class="material-icons-outlined md-32">
+          <span class="material-symbols-outlined"> my_location </span>
+        </span>
+        <p class="hidden md:block">Get Location</p>
+      </div>
+    </div>
+  </body>
+</html>
