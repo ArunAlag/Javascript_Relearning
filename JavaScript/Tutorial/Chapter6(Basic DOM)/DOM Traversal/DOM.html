@@ -3,7 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <script src="42_DOM_Traversal.js" defer></script>
+    <style>
+      div {
+        color: black;
+        font-size: 1rem;
+      }
+      div > div {
+        margin-left: 0.5rem;
+        padding-left: 0.25rem;
+        border-left: 1px solid #777;
+      }
+    </style>
+    <title>DOM traversal</title>
   </head>
-  <body></body>
+  <body>
+    <div id="grand-parent">
+      Grand-parent
+      <div>
+        Parent 1
+        <div id="child_1">Child 1</div>
+        <div id="child_2">Child 2</div>
+      </div>
+      <div>Parent 2</div>
+    </div>
+  </body>
 </html>
