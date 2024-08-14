@@ -1,0 +1,8 @@
+.list-item {
+  cursor: pointer;
+}
+
+.list-item:hover {
+  color: red;
+  text-decoration: line-through;
+}
