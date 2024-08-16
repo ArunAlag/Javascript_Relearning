@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CDN connection for tailwind css -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Connection to google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+
+    <!-- Custom Tailwind configurations for font and color-->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              title: "Anton",
+              default: "Inter",
+            },
+            colors: {
+              gray: "hsl(48,5,61)",
+              gray_acc: "hsl(48,5,49)",
+              gray_acc_dark: "hsl(48,5,29)",
+              black: `hsl(0,0,10)`,
+              black_primary: `hsl(0,0,17)`,
+              black_acc: `hsl(0,0,22)`,
+              black_light: `hsl(0,0,45)`,
+              black_lighter: `hsl(0,0,82)`,
+              red: `hsl(4,81,40)`,
+              red_acc: `hsl(4,81,71)`,
+              green: `hsl(156,100,26)`,
+              green_acc: `hsl(156,100,71)`,
+              purple: `hsl(329,35,27)`,
+              purple_acc: `hsl(329,35,60)`,
+              aqua: `hsl(180,38,27)`,
+              aqua_acc: `hsl(180,38,63)`,
+              orange: `hsl(35,100,35)`,
+              orange_acc: `hsl(35,100,66)`,
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Maps Script -->
+    <script src="58_59_60_Async.js" defer></script>
+    <title>Asychronous Code</title>
+  </head>
+
+  <body class="bg-black_primary font-default">
+    <div class="flex justify-evenly m-8 text-center ">
+      <div class="bg-red text-red_acc w-[200px] py-4 rounded-[40px]"><p class="text-lg font-bold">Callback</p></div>
+      <div class="bg-red text-red_acc w-[200px] py-4 rounded-[40px]"><p class="text-lg font-bold">Callback</p></div>
+      <div class="bg-red text-red_acc w-[200px] py-4 rounded-[40px]"> <p class="text-lg font-bold">Callback</p></div>
+    </div>
+
+    <div class="flex my-8 mx-16 border-2 border-black_lighter rounded-[18px] h-64 flex-col">
+      <div class="flex mt-8 w-full justify-between">
+        <p class="text-green_acc font-bold font-lg ml-16">Step 1: This step process will start in a while</p>
+        <p class="text-green_acc font-bold font-lg mr-16">2 sec(s)</p>
+      </div>
+
+      <div class="flex mt-8 w-full justify-between">
+        <p class="text-green_acc font-bold font-lg ml-16">Step 1: This step process will start in a while</p>
+        <p class="text-green_acc font-bold font-lg mr-16">2 sec(s)</p>
+      </div>
+
+      <div class="flex mt-8 w-full justify-between">
+        <p class="text-green_acc font-bold font-lg ml-16">Step 1: This step process will start in a while</p>
+        <p class="text-green_acc font-bold font-lg mr-16">2 sec(s)</p>
+      </div>
+    </div>
+  </body>
+</html>
