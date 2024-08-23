@@ -67,6 +67,46 @@ function promiseCallback(delay) {
   });
 }
 
+// * Trigger the DOM
+callback_btn.addEventListener("click", () => {
+  traditionalCallback();
+});
+
+promise_btn.addEventListener("click", () => {
+  timer.start();
+  promiseCallback(2000)
+    .then(() => {
+      displayProcess("Checking for creditials", timer.timeStamp());
+
+      return promiseCallback(1000);
+    })
+    .then(() => {
+      displayProcess("Fetching user data", timer.timeStamp());
+
+      return promiseCallback(1500);
+    })
+    .then(() => {
+      displayProcess("Verifying username", timer.timeStamp());
+
+      return promiseCallback(1500);
+    })
+    .then(() => {
+      displayProcess("Verifying password", timer.timeStamp());
+
+      return promiseCallback(1500);
+    })
+    .then(() => {
+      displayProcess("Checking complete", timer.timeStamp());
+
+      return promiseCallback(1500);
+    })
+    .then(() => {
+      displayProcess("Login Successful", timer.timeStamp());
+
+      return promiseCallback(1500);
+    });
+});
+
 // => Helper functions
 function trackTime() {
   let startTime = null;
@@ -90,7 +130,8 @@ function trackTime() {
     },
     end() {
       const endTime = Date.now();
-      const totalDuration = endTime - startTime; // This is the total duration it took
+      // This is the total duration it took
+      const totalDuration = endTime - startTime;
       lastTimeStamp = null;
       startTime = null;
       return formatDuration(totalDuration);
@@ -113,27 +154,3 @@ function displayProcess(information, duration) {
   div.append(process, timestamp);
   process_box.appendChild(div);
 }
-
-// * Trigger the DOM
-callback_btn.addEventListener("click", () => {
-  traditionalCallback();
-});
-
-promise_btn.addEventListener("click", () => {
-  timer.start();
-  promiseCallback(2000)
-    .then(() => {
-      displayProcess("Checking for creditials", timer.timeStamp());
-
-      return promiseCallback(5000);
-    })
-    .then(() => {
-      displayProcess("Checking for creditials 2", timer.timeStamp());
-
-      return promiseCallback(2000);
-    })
-    .then(() => {
-      displayProcess("Login success", timer.timeStamp());
-      console.log(`Total time taken: ${timer.end()}`);
-    });
-});
