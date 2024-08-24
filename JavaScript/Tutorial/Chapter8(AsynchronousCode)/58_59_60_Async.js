@@ -27,6 +27,7 @@ let timer = trackTime();
 let process_box = document.querySelector("#process_box");
 let callback_btn = document.querySelector("[data-callback]");
 let promise_btn = document.querySelector("[data-promise]");
+let async_await_btn = document.querySelector("[data-async_await]");
 
 // * Function defintion
 
@@ -67,6 +68,42 @@ function promiseCallback(delay) {
   });
 }
 
+// => Method 3: async await code
+// ~ The promise constructor
+function asyncPromiseCallback(message, delay) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(message);
+    }, delay);
+  });
+}
+
+async function asyncAwait() {
+  timer.start();
+  try {
+    const call_1 = await asyncPromiseCallback("Checking for creditials", 1500);
+    displayProcess(call_1, timer.timeStamp());
+
+    const call_2 = await asyncPromiseCallback("Fetching user data", 1500);
+    displayProcess(call_2, timer.timeStamp());
+
+    const call_3 = await asyncPromiseCallback("Verifying username", 1500);
+    displayProcess(call_3, timer.timeStamp());
+
+    const call_4 = await asyncPromiseCallback("Verifying password", 1500);
+    displayProcess(call_4, timer.timeStamp());
+
+    const call_5 = await asyncPromiseCallback("Checking complete", 1500);
+    displayProcess(call_5, timer.timeStamp());
+
+    const call_6 = await asyncPromiseCallback("Login Successful", 1500);
+    displayProcess(call_6, timer.timeStamp());
+    console.log(timer.end());
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 // * Trigger the DOM
 callback_btn.addEventListener("click", () => {
   traditionalCallback();
@@ -102,9 +139,14 @@ promise_btn.addEventListener("click", () => {
     })
     .then(() => {
       displayProcess("Login Successful", timer.timeStamp());
+      console.log(timer.end());
 
       return promiseCallback(1500);
     });
+});
+
+async_await_btn.addEventListener("click", () => {
+  asyncAwait();
 });
 
 // => Helper functions
