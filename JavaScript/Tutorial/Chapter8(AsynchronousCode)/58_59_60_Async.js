@@ -28,7 +28,7 @@ let process_box = document.querySelector("#process_box");
 let callback_btn = document.querySelector("[data-callback]");
 let promise_btn = document.querySelector("[data-promise]");
 
-// * Define function defintion
+// * Function defintion
 
 // => Method 1: regular callback code
 function traditionalCallback(username, password) {
